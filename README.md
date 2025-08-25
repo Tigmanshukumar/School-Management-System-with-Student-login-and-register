@@ -2,6 +2,8 @@
 
 A comprehensive web-based school management platform designed for students, teachers, and administrators to streamline educational processes and enhance learning experiences.
 
+- Student ID - 1401/INFI25/018
+
 ## 🌟 Features
 
 - **Student Authentication**: Secure registration and login system with JWT-based authentication
