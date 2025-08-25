@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <%- include('partials/sidebar', { path: '/dashboard/teachers' }) %>
+
+      <!-- Main Content -->
+      <main class="flex-1 bg-white shadow-md rounded-lg p-6">
+        <h1 class="text-2xl font-bold mb-6 text-gray-800">Teachers</h1>
+        
+        <% if (typeof error !== 'undefined') { %>
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <%= error %>
+          </div>
+        <% } else { %>
+          <div class="overflow-x-auto">
+            <table class="min-w-full bg-white">
+              <thead class="bg-green-100">
+                <tr>
+                  <th class="py-3 px-4 text-left text-gray-700 font-semibold">Name</th>
+                  <th class="py-3 px-4 text-left text-gray-700 font-semibold">Subject</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <% if (teachers && teachers.length > 0) { %>
+                  <% teachers.forEach(teacher => { %>
+                    <tr class="hover:bg-gray-50">
+                      <td class="py-3 px-4 text-gray-800"><%= teacher.name %></td>
+                      <td class="py-3 px-4 text-gray-800"><%= teacher.subject %></td>
+                    </tr>
+                  <% }); %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="2" class="py-4 px-4 text-center text-gray-500">No teachers found</td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        <% } %>
+      </main>
+    </div>
+  </div>
+<%- include('partials/footer') %>

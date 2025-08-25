@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Management System</title>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <header class="bg-blue-600 text-white shadow-md">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">School Management System</h1>
+      <nav>
+        <ul class="flex space-x-4">
+          <% if (typeof user !== 'undefined') { %>
+            <li><a href="/dashboard" class="hover:underline">Dashboard</a></li>
+            <li><a href="/dashboard/teachers" class="hover:underline">Teachers</a></li>
+            <li><a href="/dashboard/subjects" class="hover:underline">Subjects</a></li>
+            <li><a href="/logout" class="hover:underline">Logout</a></li>
+          <% } else { %>
+            <li><a href="/" class="hover:underline">Home</a></li>
+            <li><a href="/login" class="hover:underline">Login</a></li>
+            <li><a href="/register" class="hover:underline">Register</a></li>
+          <% } %>
+        </ul>
+      </nav>
+    </div>
+  </header>

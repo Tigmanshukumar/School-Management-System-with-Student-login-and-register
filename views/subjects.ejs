@@ -1,0 +1,47 @@
+<%- include('partials/header') %>
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <%- include('partials/sidebar', { path: '/dashboard/subjects' }) %>
+
+      <!-- Main Content -->
+      <main class="flex-1 bg-white shadow-md rounded-lg p-6">
+        <h1 class="text-2xl font-bold mb-6 text-gray-800">Subjects</h1>
+        
+        <% if (typeof error !== 'undefined') { %>
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <%= error %>
+          </div>
+        <% } else { %>
+          <div class="grid md:grid-cols-2 gap-6">
+            <% if (subjects && subjects.length > 0) { %>
+              <% subjects.forEach(subject => { %>
+                <div class="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                  <div class="bg-blue-50 px-4 py-3 border-b">
+                    <h2 class="text-xl font-semibold text-blue-700"><%= subject.name %></h2>
+                  </div>
+                  <div class="p-4">
+                    <h3 class="font-medium text-gray-700 mb-2">Assigned Teachers:</h3>
+                    <% if (subject.teachers && subject.teachers.length > 0) { %>
+                      <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <% subject.teachers.forEach(teacher => { %>
+                          <li><%= teacher.name %></li>
+                        <% }); %>
+                      </ul>
+                    <% } else { %>
+                      <p class="text-gray-500 italic">No teachers assigned</p>
+                    <% } %>
+                  </div>
+                </div>
+              <% }); %>
+            <% } else { %>
+              <div class="col-span-2 text-center py-8 text-gray-500">
+                <p>No subjects found</p>
+              </div>
+            <% } %>
+          </div>
+        <% } %>
+      </main>
+    </div>
+
+   </div>
+<%- include('partials/footer') %>
